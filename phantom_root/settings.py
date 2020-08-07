@@ -20,6 +20,7 @@ from django.core.exceptions import ImproperlyConfigured
 with open('secrets.json') as f:
     secrets = json.loads(f.read())
 
+
 def get_secret(setting, secrets=secrets):
     '''Get the secret variable or return explicit exception.'''
     try:
