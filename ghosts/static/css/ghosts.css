@@ -1,0 +1,27 @@
+.block-content{
+    background: yellow;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.dashboard {
+    background: gray;
+    margin-top: 50px;
+    width: 800px;
+    height: 600px;
+}
+
+.ghost-names{
+    margin-top: 50px;
+    overflow-y: scroll;
+    height: 400px;
+    text-align: center;
+}
+
+.ghost-names p {
+    color: white;
+}

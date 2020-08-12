@@ -1,5 +1,16 @@
 {% extends 'ghosts/base.html' %}
-{% block title %}Google Registration{% endblock %}
+{% block title %}Ghost Names{% endblock %}
 {% block content %}
-    <h1>Register your ghost names</h1>
+    <div class="container">
+        <div class="row">
+            <div class="dashboard col-md-8 offset-md-2">
+                <h1>Register your ghost names</h1>
+                <div class="ghost-names">
+                    {% for x in ghost_names %}
+                        <p>{{ x.name }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
