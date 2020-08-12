@@ -15,6 +15,9 @@ class GhostName(CustomTimeStampModel):
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=1000, blank=True)
 
+    def __str__(self):
+        return "%s" % (self.name)
+
 
 class GhostUser(CustomTimeStampModel):
     user = models.OneToOneField(get_user_model(), on_delete=CASCADE)

@@ -1,0 +1,27 @@
+{% extends 'ghosts/base.html' %}
+{% load socialaccount %}
+{% block title %}Ghost Name Picker{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="dashboard col-md-8 offset-md-2">
+                <h1>Register your ghost names</h1>
+                {% if user.is_authenticated and user.ghostuser.ghost_name == None %}
+                    <form id="post-form" method="post" action="{% url 'name_picker' %}"> {% csrf_token %}
+                        <div class="ghost-names">
+                            {{ name_picker_form.as_p }}
+                        </div>
+                        <button type="submit">Save</button>
+                    </form>
+                {% elif ghost_user %}
+                    <p>Your ghost name is: {{ ghost_user.ghost_name }} </p>
+                {% else %}
+                    <div class="login-section">
+                        <p>Please login using Google:</p>
+                        <a type="button" class="btn btn-light" href="{% provider_login_url 'google' %}">Login with Google</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

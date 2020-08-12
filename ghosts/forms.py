@@ -1,0 +1,17 @@
+from ghosts.models import GhostUser, GhostName
+from django.forms import ModelForm
+from django import forms
+
+
+class NamePickerForm(ModelForm):
+
+    first_name = forms.CharField(label='Your name', max_length=100)
+    last_name = forms.CharField(label='Your name', max_length=100)
+
+    class Meta:
+        model = GhostUser
+        fields = ['ghost_name']
+
+    def __init__(self, *args, **kwargs):
+        super(NamePickerForm, self).__init__(*args, **kwargs)
+        self.fields['ghost_name'].queryset = GhostName.objects.filter(ghostuser__isnull=True)[:3]

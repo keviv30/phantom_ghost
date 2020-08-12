@@ -22,6 +22,10 @@ h1 {
     text-align: center;
 }
 
-.ghost-names p {
+p {
     color: white;
+}
+
+.login-section {
+    align: center;
 }
