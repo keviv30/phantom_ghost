@@ -13,7 +13,7 @@ class CustomTimeStampModel(models.Model):
 
 class GhostName(CustomTimeStampModel):
     name = models.CharField(max_length=50)
-    comment_text = models.TextField(max_length=1000, blank=True)
+    description = models.TextField(max_length=1000, blank=True)
 
 
 class GhostUser(CustomTimeStampModel):
