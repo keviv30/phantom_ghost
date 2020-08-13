@@ -22,7 +22,7 @@ h1 {
     text-align: center;
 }
 
-p {
+p, span {
     color: white;
 }
 

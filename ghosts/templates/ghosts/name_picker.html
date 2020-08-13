@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="dashboard col-md-8 offset-md-2">
-                <h1>Register your ghost names</h1>
+                <h1>Register your ghost name</h1>
                 {% if user.is_authenticated and ghost_user == None %}
                     <form id="post-form" method="post" action="{% url 'name_picker' %}"> {% csrf_token %}
                         <div class="ghost-names">
@@ -15,12 +15,20 @@
                     </form>
                 {% elif ghost_user %}
                     <p>Your ghost name is: {{ ghost_user.ghost_name }} </p>
+                    <form id="post-form" method="post" action="{% url 'update_name' %}"> {% csrf_token %}
+                        <span>Plese select your new</span>
+                        {{ name_picker_form.as_p }}
+                        <button type="submit">Save</button>
+                    </form>
                 {% else %}
                     <div class="login-section">
                         <p>Please login using Google:</p>
                         <a type="button" class="btn btn-light" href="{% provider_login_url 'google' %}">Login with Google</a>
                     </div>
                 {% endif %}
+                <a href="{% url 'home' %}" type="button" class="btn btn-light">
+                    Back to home
+                </a>
             </div>
         </div>
     </div>

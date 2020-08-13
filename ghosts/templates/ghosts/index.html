@@ -4,22 +4,28 @@
     <div class="container">
         <div class="row">
             <div class="dashboard col-md-8 offset-md-2">
-                <h1>Register your ghost names</h1>
+                <h1>Ghost Names</h1>
                 <div class="ghost-names">
                     {% for x in ghost_names %}
                         <p>{% if x.ghostuser %}
                                 {{ x.ghostuser.user.first_name }}
                            {% endif %}
                                 {{ x.name }}
-                            {% if x.ghostuser %}
+                           {% if x.ghostuser %}
                                 {{ x.ghostuser.user.last_name }}
                            {% endif %}
                         </p>
                     {% endfor %}
                 </div>
-                <a href="{% url 'name_picker' %}" type="button" class="btn btn-light">
-                    Please pick your ghost name
-                </a>
+                {% if not ghost_user %}
+                    <a href="{% url 'name_picker' %}" type="button" class="btn btn-light">
+                        Get a Phantom name
+                    </a>
+                {% else %}
+                    <a href="{% url 'name_picker' %}" type="button" class="btn btn-light">
+                        Change your current Phantom name
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>
