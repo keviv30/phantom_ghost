@@ -12,9 +12,9 @@ http://ec2-3-135-183-255.us-east-2.compute.amazonaws.com/
 
 # App Functions
 - List all the Phantom names and the user's name if they are assigned to a ghost name
-- Allow user's to login using Google Authentication
-- Allow user's to create their Phantom name
-- Allow user's to change their Phantom name to a new Phantom name if it's available
+- Allow users to login using Google Authentication
+- Allow users to create their Phantom name
+- Allow users to change their Phantom name to a new Phantom name if it's available
 
 Software used to build the project:
 -   Django (web framework)
