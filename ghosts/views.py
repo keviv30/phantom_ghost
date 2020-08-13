@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from ghosts.models import GhostName, GhostUser
+from django.urls import reverse
 from ghosts.forms import NamePickerForm
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -22,7 +23,8 @@ def name_picker(request):
     name_picker_form = NamePickerForm(request.POST or None)
 
     ghost_user = None
-    if request.user:
+
+    if request.user and request.user.id is not None:
         try:
             ghost_user = GhostUser.objects.get(user=request.user)
         except ObjectDoesNotExist:
@@ -36,7 +38,7 @@ def name_picker(request):
         obj.user.last_name = name_picker_form.cleaned_data['last_name']
         obj.user.save()
         obj.save()
-        redirect('home')
+        return redirect('home')
 
     context = {
         'name_picker_form': name_picker_form,
@@ -44,6 +46,3 @@ def name_picker(request):
     }
 
     return render(request, 'ghosts/name_picker.html', context)
-
-
-
