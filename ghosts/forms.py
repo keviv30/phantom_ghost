@@ -5,8 +5,8 @@ from django import forms
 
 class NamePickerForm(ModelForm):
 
-    first_name = forms.CharField(label='Your name', max_length=100)
-    last_name = forms.CharField(label='Your name', max_length=100)
+    first_name = forms.CharField(label='First Name', max_length=100)
+    last_name = forms.CharField(label='Last Name', max_length=100)
 
     class Meta:
         model = GhostUser
@@ -14,4 +14,4 @@ class NamePickerForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(NamePickerForm, self).__init__(*args, **kwargs)
-        self.fields['ghost_name'].queryset = GhostName.objects.filter(ghostuser__isnull=True)[:3]
+        self.fields['ghost_name'].queryset = GhostName.objects.filter(ghostuser__isnull=True)
