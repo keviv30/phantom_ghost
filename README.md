@@ -16,7 +16,7 @@ http://ec2-3-135-183-255.us-east-2.compute.amazonaws.com/
 - Allow users to create their Phantom name
 - Allow users to change their Phantom name to a new Phantom name if it's available
 
-Software used to build the project:
+# Software used to build the project:
 -   Django (web framework)
 -   Python3
 -   Bootstrap
