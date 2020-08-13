@@ -15,3 +15,14 @@ class NamePickerForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(NamePickerForm, self).__init__(*args, **kwargs)
         self.fields['ghost_name'].queryset = GhostName.objects.filter(ghostuser__isnull=True)
+
+
+class NameUpdateForm(ModelForm):
+
+    class Meta:
+        model = GhostUser
+        fields = ['ghost_name']
+
+    def __init__(self, *args, **kwargs):
+        super(NameUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['ghost_name'].queryset = GhostName.objects.filter(ghostuser__isnull=True)
