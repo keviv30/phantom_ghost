@@ -13,16 +13,9 @@ class NamePickerForm(ModelForm):
         fields = ['ghost_name']
 
     def __init__(self, *args, **kwargs):
+        instance = kwargs.get('instance', None)
         super(NamePickerForm, self).__init__(*args, **kwargs)
         self.fields['ghost_name'].queryset = GhostName.objects.filter(ghostuser__isnull=True)
-
-
-class NameUpdateForm(ModelForm):
-
-    class Meta:
-        model = GhostUser
-        fields = ['ghost_name']
-
-    def __init__(self, *args, **kwargs):
-        super(NameUpdateForm, self).__init__(*args, **kwargs)
-        self.fields['ghost_name'].queryset = GhostName.objects.filter(ghostuser__isnull=True)
+        if instance:
+            self.initial['first_name'] = instance.user.first_name
+            self.initial['last_name'] = instance.user.last_name
